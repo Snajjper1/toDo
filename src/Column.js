@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Column(props) {
 
     const deleteEl = (id) => {
@@ -7,20 +9,22 @@ function Column(props) {
 
 
     return (
-        <div>
+        <div className="container">
+            <div>
+                {props.list.filter(el => el.status === props.status).map(el =>
+                    <div className="col" key={el.id}>
+                        <div className="row">
+                            {el.status === 'todo' && el.title}
+                        </div>
 
-            {props.list.filter(el => el.status === props.status).map(el =>
-                <li key={el.id}>
-                    {props.status === 'progress' && <button disabled>Move to To Do</button>}
-                    {props.status === 'done' && <button disabled>Move to Progress</button>}
-                    {el.title} {el.status}
-                    <button onClick={() => deleteEl(el.id)}>Delete</button>
-                    {props.status === 'todo' && <button disabled> Move to progress</button>}
-                    {props.status === 'progress' && <button disabled>Move to Done</button>}
-                </li>
-            )}
-
-            <hr/>
+                        <div className="row">
+                            gfh
+                        </div>
+                        <div className="row">
+                            Column
+                        </div>
+                    </div>)}
+            </div>
         </div>
     )
 }
